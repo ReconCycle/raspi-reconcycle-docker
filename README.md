@@ -14,6 +14,9 @@ $ docker build -t raspi:devel .
 
 ```sh 
 $ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --privileged --name ros1_devel raspi:devel
+$ catkin build
+$ source /source_ws.sh
+$ export ROS_MASTER_URI=http://Rok-PC:11311/
 ```
 
 # Use docker
