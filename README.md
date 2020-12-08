@@ -23,7 +23,7 @@ docker run -it --device /dev/mem --privileged --name ros1_active raspi:active
 ```
 
 ```sh
-docker run -it -v /home/reconcycle_config/active_config:/ros_ws/src/raspi_ros/active_config --device /dev/mem --privileged --name ros1_active raspi:active
+docker run -it -v $HOME/reconcycle_config/active_config:/ros_ws/src/raspi_ros/active_config --device /dev/mem --privileged --name ros1_active raspi:active
 ```
 
 
