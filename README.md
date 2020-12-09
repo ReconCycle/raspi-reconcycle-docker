@@ -13,7 +13,11 @@ $ docker build -t raspi:active .
 # Use docker
 
 ```sh
-docker build -t raspi:devel .
+
+docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --restart always --device /dev/mem --privileged --name ros1_active raspi:active
+docker run -it --device /dev/mem --privileged --net=host --name ros1_active1 raspi:active bash 
+
+
 docker run -it --net=host raspi:devel
 $ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --privileged --name ros1_devel raspi:devel
 ```
@@ -23,6 +27,11 @@ $ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --p
 
 # Develope
 ```sh
+docker build -t raspi:devel .
+
+
+
+
 
 docker run -it reconcycle2:devel
 
