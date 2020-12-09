@@ -6,9 +6,18 @@ Standalone repository and instructions for the custom ros docker used on a raspb
 
 ```sh
 $ docker build -t raspi:active .
-
+$ docker build -t raspi:devel .
 ```
 
+
+# Develope
+
+```sh 
+$ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --privileged --name ros1_devel raspi:devel
+$ catkin build
+$ source /source_ws.sh
+$ export ROS_MASTER_URI=http://Rok-PC:11311/
+```
 
 # Use docker
 
@@ -22,10 +31,16 @@ docker run -it --net=host raspi:devel
 $ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --privileged --name ros1_devel raspi:devel
 ```
 
+```sh
+docker run -it -v $HOME/reconcycle_config/active_config:/ros_ws/src/raspi_ros/active_config --device /dev/mem --privileged --name ros1_active raspi:active
+```
+
+
+
 [Problem with sudo docker](https://docs.docker.com/engine/install/linux-postinstall/)
 
 
-# Develope
+
 ```sh
 docker build -t raspi:devel .
 
