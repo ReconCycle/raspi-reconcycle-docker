@@ -13,7 +13,7 @@ $ docker build -t raspi:devel .
 # Develope
 
 ```sh 
-$ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src --device /dev/mem --net=host --privileged --name ros1_devel raspi:devel bash
+$ docker run -it -v /home/ubuntu/catkin_ws/src:/ros_ws/src $HOME/reconcycle_config/:/reconcycle_config/ --device /dev/mem --net=host --privileged --name ros1_devel raspi:devel bash
 $ catkin build
 $ source /source_ws.sh
 $ export ROS_MASTER_URI=http://Rok-PC:11311/
