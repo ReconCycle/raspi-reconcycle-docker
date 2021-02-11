@@ -8,7 +8,8 @@ RUN apt update && apt install -y \
     nano \
     net-tools \
     iputils-ping \
-    git
+    git \
+    wget
     
 
 
