@@ -12,9 +12,10 @@ RUN apt update && apt install -y \
     wget
     
 
-
-RUN wget https://bootstrap.pypa.io/2.7/get-pip.py
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
 RUN python get-pip.py
+RUN pip install --upgrade "pip < 21.0"
+
 
 RUN pip install catkin_tools
 
