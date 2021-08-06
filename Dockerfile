@@ -59,6 +59,11 @@ RUN apt clean
 # Set the workspace variable
 ENV ROS_WORKSPACE=/ros_ws
 
+# Set the ROS_MASTER ip variables, NODE_IP, NODE_NAME
+ENV ROS_MASTER_URI = 000.000.000.000
+ENV NODE_IP = 000.000.000.000
+ENV NODE_NAME = 'Setname'
+
 # We source the ros_ws workspace as well when entering the container
 RUN cp /ros_entrypoint.sh /tmp_entrypoint.sh
 RUN (head -n -1 /ros_entrypoint.sh && echo 'source "/ros_ws/devel/setup.bash"' && tail -n 1 /ros_entrypoint.sh;) > /tmp_entrypoint.sh
@@ -77,5 +82,8 @@ RUN mkdir -p $HOME/reconcycle_config
 COPY dynamic_startup.sh $HOME/reconcycle_config/ 
 #RUN chmod +x $HOME/reconcycle_config/dynamic_startup.sh
 #&& touch $HOME/reconcycle_config/dynamic_startup.sh  && chmod +x $HOME/reconcycle_config/dynamic_startup.sh  && echo "echo \"No dynamic startup!\"" >> $HOME/reconcycle_config/dynamic_startup.sh && echo "exec \"$@\"" >> $HOME/reconcycle_config/dynamic_startup.sh 
+
+
+
 
 ENTRYPOINT ["/reconcycle_config/dynamic_startup.sh"]
