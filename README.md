@@ -2,13 +2,14 @@
 
 Docker image for ROS package https://github.com/ReconCycle/raspi_ros
 
-## Change ENV variables in the docker file
+## Change ENV variables in the docker-compose file
 
-In the dockerfile, change the ENV variables of ROS\_MASTER\_URI, this Raspberry IP (NODE\_IP) (find it with ifconfig) and this node name (NODE\_NAME).
+In the docker-compose file, change the ENV variables of ROS\_MASTER\_URI, this Raspberry IP (ROS\_IP) (find it with ifconfig) and this node name (THIS\_RAS\_NAME).
 
->ENV ROS_MASTER_URI = 000.000.000.000
->ENV NODE_IP = 000.000.000.000
->ENV NODE_NAME = 'Setname'
+>environment:
+>- ROS_MASTER_URI : 000.000.000.000
+>- NODE_IP : 000.000.000.000
+>- NODE_NAME : 'Setname'
 
 
 ## Build Docker image
@@ -43,7 +44,7 @@ $ export ROS_MASTER_URI=http://localhost:11311/
 docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --device /dev/mem --privileged --name ros1_active raspi:active
 
 ```
-
+docker-compose up
 
 
 

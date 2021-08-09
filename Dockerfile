@@ -59,11 +59,6 @@ RUN apt clean
 # Set the workspace variable
 ENV ROS_WORKSPACE=/ros_ws
 
-# Set the ROS_MASTER ip variables, NODE_IP, NODE_NAME
-ENV ROS_MASTER_URI = 000.000.000.000
-ENV NODE_IP = 000.000.000.000
-ENV NODE_NAME = 'Setname'
-
 # We source the ros_ws workspace as well when entering the container
 RUN cp /ros_entrypoint.sh /tmp_entrypoint.sh
 RUN (head -n -1 /ros_entrypoint.sh && echo 'source "/ros_ws/devel/setup.bash"' && tail -n 1 /ros_entrypoint.sh;) > /tmp_entrypoint.sh
