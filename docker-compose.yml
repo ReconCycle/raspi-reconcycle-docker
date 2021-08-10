@@ -1,22 +1,17 @@
 version: '3'
-#networks:
-#  ros:
-#    driver: bridge
-    
 services:
   ros1_active:
     image: raspi:active
     environment:
-      -  ROS_MASTER_URI=10.20.0.1
+      # set ROS_MASTER_URI to match with the ros master
+      -  ROS_MASTER_URI=http://10.20.0.1:11311
+      # set ROS_IP to match with the raspbery's ip in the ros network
       # - ROS_IP=000.000.000.000
       - THIS_RAS_NAME='None'
+    devices:
+      - /dev/mem
     volumes:
-      - /home/ubuntu/catkin_ws/src:/ros_ws/src
-      - $HOME/reconcycle_config/:/reconcycle_config/ # check if necessary
-    #ports:
-    #  - "8080:8080"
-    #networks:
-    #  - ros
+      - $HOME/reconcycle_config/:/reconcycle_config 
     network_mode: "host"
     restart: always
 
