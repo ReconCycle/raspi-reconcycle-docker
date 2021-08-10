@@ -13,8 +13,8 @@ services:
     volumes:
       - /home/ubuntu/catkin_ws/src:/ros_ws/src
       - $HOME/reconcycle_config/:/reconcycle_config/ # check if necessary
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
     #networks:
     #  - ros
     network_mode: "host"
