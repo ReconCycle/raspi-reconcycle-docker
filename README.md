@@ -12,8 +12,8 @@ sudo pip3 install docker-compose
 ```
 
 ## Change ENV variables in the docker-compose file
-
-In the docker-compose file, change the ENV variables of ROS\_MASTER\_URI, this Raspberry IP (ROS\_IP) (find it with ifconfig) and this node name (THIS\_RAS\_NAME).
+There are two docker-compose files. The one inside 'rpi-panda1-compose' runs on 'raspi-panda1-block', while the one in the root of this package runs on every other RPi.
+In BOTH of the docker-compose files(including the one in folder 'rpi-panda1-compose', change the ENV variables of ROS\_MASTER\_URI, this Raspberry IP (ROS\_IP) (find it with ifconfig) and this node name (THIS\_RAS\_NAME).
 
 ```yaml
 environment:
