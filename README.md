@@ -1,26 +1,38 @@
 # raspi-reconcycle-docker
 
-Docker image for ROS package https://github.com/ReconCycle/raspi_ros
+Dockerfiles for ROS package https://github.com/ReconCycle/raspi_ros
 
-## Install docker-compose on RPi, if it's not installed yet
+Follow https://github.com/ReconCycle/raspberry_reconcycle_init for installation instructions.
 
-```bash
-sudo apt-get install libffi-dev libssl-dev
-sudo apt install python3-dev
-sudo apt-get install -y python3 python3-pip
-sudo pip3 install docker-compose
-```
+<!--
 
 ## Change ENV variables in the docker-compose file
-There are two docker-compose files. The one inside 'rpi-panda1-compose' runs on 'raspi-panda1-block', while the one in the root of this package runs on every other RPi.
-In BOTH of the docker-compose files(including the one in folder 'rpi-panda1-compose', change the ENV variables of ROS\_MASTER\_URI, this Raspberry IP (ROS\_IP) (find it with ifconfig) and this node name (THIS\_RAS\_NAME).
+
+## Set up the specific raspberry 
+
+Copy the docker-compose.yaml template and edit it.
+```sh
+cd raspi-reconcycle-docker
+cp docker-compose-template.yaml ~/reconcycle_config/docker-compose.yaml
+nano ~/reconcycle_config/docker-compose.yaml
+```
+
+Scroll to the environment variables section:
 
 ```yaml
-environment:
-- ROS_MASTER_URI : 000.000.000.000
-- NODE_IP : 000.000.000.000
-- NODE_NAME : 'Setname'
+    environment:
+      - ROS_MASTER_URI=http://10.20.0.1:11311
+      - ROS_IP=10.20.1.XXX
+      - THIS_RAS_NAME='example'
 ```
+
+1. Set `ROS_MASTER_URI` to have the correct IP of the computer that runs ROS master. The variable must include the protocol and port, for example
+http://192.168.0.1:11311
+2. Set `ROS_IP` to match with the Raspberry's IP. Find your Raspberry's IP with `ifconfig`, for example 192.168.0.1
+3. Set the name of your tool (this will later be the name for the ROS namespace) by changing the `THIS_RAS_NAME`.
+
+Check [network setup](http://wiki.ros.org/ROS/NetworkSetup) if you encounter the AF_INET error!
+
 
 ## Build Docker image
 
@@ -28,7 +40,6 @@ environment:
 docker build -t raspi:active .
 ```
 
-<!--
 # Develop with Docker
 
 ```bash 
@@ -46,10 +57,10 @@ $ catkin build
 $ source /source_ws.sh
 $ export ROS_MASTER_URI=http://localhost:11311/
 ```
--->
 
 # Use Docker
 
 ```
 docker-compose up
 ```
+-->
