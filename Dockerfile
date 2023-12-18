@@ -22,7 +22,7 @@ RUN pip install catkin_tools
 #For raspberry
 RUN pip install RPi.GPIO
 
-RUN pip install gpiozero
+RUN pip install gpiozero==1.6.2
 #For saving config msgs
 RUN apt-get install ros-kinetic-rospy-message-converter
 
